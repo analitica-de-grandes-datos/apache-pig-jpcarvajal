@@ -14,7 +14,7 @@ $ pig -x local -f pregunta.pig
 */
 
 data = LOAD 'data.tsv' AS (letra:chararray, fecha:chararray, valor:int);
-grouped_events = GROUP data BY letra;
-r = FOREACH grouped_data GENERATE group AS letra, COUNT(data) AS count;
+grouped = GROUP data BY letra;
+r = FOREACH grouped GENERATE group AS letra, COUNT(data) AS count;
 
 STORE r INTO 'output/' USING PigStorage(',');
