@@ -14,5 +14,5 @@ $ pig -x local -f pregunta.pig
 data = LOAD 'data.tsv' AS (letra:chararray, fecha:chararray, valor:int);
 ordered_data = ORDER data BY valor desc;
 limited = LIMIT ordered_data 5;
-valores = for each limited GENERATE valor;
+valores = foreach limited GENERATE valor;
 STORE valores into 'output/' USING PigStorage(',');
