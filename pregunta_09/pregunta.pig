@@ -40,7 +40,7 @@ truck_events = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 r = foreach truck_events GENERATE concat (name, '@', lastName);
 STORE r into 'output/' USING PigStorage(',');
