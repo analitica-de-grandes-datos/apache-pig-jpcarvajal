@@ -21,4 +21,16 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
-
+data = LOAD 'data.csv' USING PigStorage(',')
+    AS (
+            id:int,
+            name:chararray,
+            lastName:chararray,
+            eventType:chararray,
+            birthdate:chararray,
+            color:chararray,
+            number:int,
+    );
+filtro = FILTER data BY color matches '[aeiou]$';
+r = FOREACH filtro GENERATE firstname, color;
+STORE r into 'output/' USING PigStorage(',');

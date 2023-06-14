@@ -18,5 +18,18 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+data = LOAD 'data.csv' USING PigStorage(',')
+    AS (
+            id:int,
+            name:chararray,
+            lastName:chararray,
+            eventType:chararray,
+            birthdate:chararray,
+            color:chararray,
+            number:int,
+    );
+filtro = FILTER data BY REGEX_EXTRACT(birthdate, '....-..-..', 2);
+STORE filtro into 'output/' USING PigStorage(',');
+
 
 
