@@ -24,11 +24,10 @@ data = LOAD 'data.csv' USING PigStorage(',')
             id:int,
             name:chararray,
             lastName:chararray,
-            eventType:chararray,
             birthdate:chararray,
             color:chararray,
             number:int
     );
-r = FOREACH data GENERATE name, INDEXOF(name, 'ia');
+r = FOREACH data GENERATE INDEXOF(name, 'ia');
 STORE r into 'output/' USING PigStorage(',');
 

@@ -18,13 +18,12 @@ data = LOAD 'data.csv' USING PigStorage(',')
             id:int,
             name:chararray,
             lastName:chararray,
-            eventType:chararray,
             birthdate:chararray,
             color:chararray,
             number:int
     );
 años = FOREACH data GENERATE SUBSTRING(birthdate, 0, 4) as year;
 grouped = GROUP años BY year;
-r = foreach grouped GENERATE GROUP as year, COUNT(Years);
+r = foreach grouped GENERATE GROUP as year, COUNT(años);
 STORE r into 'output/' USING PigStorage(',');
 

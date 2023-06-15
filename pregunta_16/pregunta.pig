@@ -24,7 +24,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
             id:int,
             name:chararray,
             lastName:chararray,
-            eventType:chararray,
             birthdate:chararray,
             color:chararray,
             number:int
