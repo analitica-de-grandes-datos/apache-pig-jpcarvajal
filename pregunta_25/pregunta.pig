@@ -29,6 +29,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-r = FOREACH data GENERATE firstname, INDEXOF(firstname, 'a');
+r = FOREACH data GENERATE name, INDEXOF(firstname, 'a');
 STORE r into 'output/' USING PigStorage(',');
 

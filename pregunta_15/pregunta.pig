@@ -17,7 +17,6 @@ Escriba el resultado a la carpeta `output` del directorio actual. Para la
 evaluación, pig sera eejcutado ejecutado en modo local:
 
 $ pig -x local -f pregunta.pig
-
 */
 data = LOAD 'data.csv' USING PigStorage(',')
     AS (
@@ -29,6 +28,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-filtro = FILTER data BY color matches 'blue' and firstname matches '^Z.*';
-r = FOREACH filtro GENERATE firstname, color;
+filtro = FILTER data BY color matches 'blue' and name matches '^Z.*';
+r = FOREACH filtro GENERATE name, color;
 STORE r into 'output/' USING PigStorage(',');

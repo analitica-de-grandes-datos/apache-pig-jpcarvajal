@@ -32,5 +32,5 @@ data = LOAD 'data.csv' USING PigStorage(',')
             number:int
     );
 filtro = FILTER data BY color matches '^[^b].*';
-r = FOREACH filtro GENERATE firstname, color;
+r = FOREACH filtro GENERATE name, color;
 STORE r into 'output/' USING PigStorage(',');

@@ -30,7 +30,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-filtro = FILTER data BY (SUBSTRING(UPPER(firstname), 0, 1)  >='M');
-r = FOREACH filtro GENERATE firstname;
+filtro = FILTER data BY (SUBSTRING(UPPER(name), 0, 1)  >='M');
+r = FOREACH filtro GENERATE name;
 STORE r into 'output/' USING PigStorage(',');
 
