@@ -32,7 +32,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             number:int
     );
 filtro = FILTER data BY (SUBSTRING(UPPER(name), 0, 1)  >= 'M');
-formatted = FOREACH data GENERATE birthdate, SUBSTRING(birthdate, 0, 4), SUBSTRING(birthdate, 2, 4);
+formatted = FOREACH data GENERATE SUBSTRING(birthdate, 0, 4), SUBSTRING(birthdate, 2, 4);
 STORE formatted into 'output/' USING PigStorage(',');
 
 

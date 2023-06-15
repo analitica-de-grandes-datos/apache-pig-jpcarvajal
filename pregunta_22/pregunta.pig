@@ -30,6 +30,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-filtro = FILTER data BY NOT color matches '.*n';
+filtro = FILTER data BY NOT color matches '$n';
 r = FOREACH filtro GENERATE name, color;
 STORE r into 'output/' USING PigStorage(',');

@@ -31,5 +31,5 @@ data = LOAD 'data.csv' USING PigStorage(',')
     );
 longitud = foreach data GENERATE lastName,SIZE(lastName) as length;
 ordered = order longitud by length desc, lastName;
-r = ordered limit 5;                                   
+r = LIMIT ordered 5;                                   
 STORE r into 'output/' USING PigStorage(',');

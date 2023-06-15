@@ -28,6 +28,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-filtro = FILTER data BY color matches 'blue' OR name matches 'KZ.*';
+filtro = FILTER data BY color matches 'blue' OR name matches 'K.*';
 r = FOREACH filtro GENERATE name, color;
 STORE r into 'output/' USING PigStorage(',');
