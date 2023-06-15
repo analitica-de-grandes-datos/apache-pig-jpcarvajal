@@ -34,7 +34,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 filtro = FILTER data BY lastName matches '^[D-K].*';
 r = FOREACH filtro GENERATE lastName;

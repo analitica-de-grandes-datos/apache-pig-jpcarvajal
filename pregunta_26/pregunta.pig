@@ -28,7 +28,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 filtro = FILTER data BY (SUBSTRING(UPPER(firstname), 0, 1)  >='M');
 r = FOREACH filtro GENERATE firstname;

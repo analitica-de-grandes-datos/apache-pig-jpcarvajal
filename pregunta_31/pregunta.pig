@@ -21,7 +21,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 años = FOREACH data GENERATE SUBSTRING(birthdate, 0, 4) as year;
 grouped = GROUP años BY year;

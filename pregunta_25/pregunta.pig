@@ -27,7 +27,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 r = FOREACH data GENERATE firstname, INDEXOF(firstname, 'a');
 STORE r into 'output/' USING PigStorage(',');

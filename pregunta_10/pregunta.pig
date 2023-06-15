@@ -28,7 +28,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             eventType:chararray,
             birthdate:chararray,
             color:chararray,
-            number:int,
+            number:int
     );
 longitud = foreach data GENERATE concat lastName,SIZE(lastName) as length;
 ordered = order longitud by length desc, lastName;
