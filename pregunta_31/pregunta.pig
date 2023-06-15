@@ -24,6 +24,6 @@ data = LOAD 'data.csv' USING PigStorage(',')
     );
 years = FOREACH data GENERATE SUBSTRING(birthdate, 0, 4) as year;
 grouped = GROUP years BY year;
-r = foreach grouped GENERATE GROUP as year, COUNT(years);
+r = foreach grouped GENERATE GROUP as year, COUNT(years) as cnt;
 STORE r into 'output/' USING PigStorage(',');
 

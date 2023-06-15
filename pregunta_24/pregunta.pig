@@ -27,7 +27,7 @@ data = LOAD 'data.csv' USING PigStorage(',')
             color:chararray,
             number:int
     );
-filtro = FOREACH GENERATE REGEX_EXTRACT(birthdate, '(....)-(..)-(..)', 2);
+filtro = FOREACH data GENERATE REGEX_EXTRACT(birthdate, '(....)-(..)-(..)', 2);
 STORE filtro into 'output/' USING PigStorage(',');
 
 
