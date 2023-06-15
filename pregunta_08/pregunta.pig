@@ -16,4 +16,10 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+data = LOAD 'data.tsv' AS (mayu: chararray, minu: bag{t:tuple(f:chararray)}, arr: map[]);
+generated = foreach data generate FLATTEN(minu) as minusculas, FLATTEN(arr) as arreglos;
+nueva_columna = foreach generated generate (minusculas, arreglos) as tupla;
+grouped = group nueva_columna BY tupla;
+r = FOREACH grouped GENERATE group, COUNT(nueva_columna);
+STORE r into 'output/' USING PigStorage(',');
 
